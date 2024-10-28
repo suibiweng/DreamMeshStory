@@ -1,11 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-// using Fusion;
-// using Normal.Realtime;
-// using Oculus.Interaction;
 using UnityEngine;
 using RealityEditor;
-// using Normal.Realtime; 
 using TMPro;
 using TriLibCore.Dae.Schema;
 using Unity.VisualScripting;
@@ -20,8 +16,8 @@ public class RealityEditorManager : MonoBehaviour
     // private NetworkRunner _runner;
     // private Realtime _realtime;
     public bool isOnline; 
-    public Transform LeftHand, RightHand;
-    public Transform PlayerCamera; 
+    // public Transform LeftHand, RightHand;
+    // public Transform PlayerCamera; 
     public string uploadPort,downloadPort;
     public string ServerURL;
     
@@ -123,8 +119,32 @@ public class RealityEditorManager : MonoBehaviour
         selectedIDUrl=urlid;  
         IDs++;
         
-
     }
+    
+
+
+    public void createSpotwithPromt(Vector3 pos,Vector3 scale,string prompt){
+        
+        GameObject gcube = Instantiate(GenerateSpotPrefab, pos, Quaternion.identity);
+        gcube.GetComponent<GenerateSpot>().id=IDs;
+        string urlid=TimestampGenerator.GetTimestamp(); 
+        gcube.GetComponent<GenerateSpot>().URLID=urlid;
+
+
+        gcube.GetComponent<GenerateSpot>().setTheType(0);
+
+
+        gcube.transform.localScale = scale;
+        Debug.Log("The new Cube's URLID is: " + urlid);
+        // gcube.GetComponent<DataSync2>().SetURLID(urlid); //setting the network urlid once right after we make the spot. But this dont work
+        Debug.Log("Setting the network urlid to be: " + urlid);
+        GenCubesDic.Add(urlid,gcube); //think about this: Are we adding the cube to the other players dictionaries? 
+        selectedIDUrl=urlid;  
+        IDs++;
+        gcube.GetComponent<GenerateSpot>().GenrateModelPrompt(prompt);
+        
+    }
+
 
     
     public void createSpot(Vector3 pos)

@@ -7,7 +7,6 @@ using TMPro;
 using RealityEditor;
 using UnityEngine.UI;
 
-using Unity.VisualScripting;
 
 
 public class GenerateSpot : MonoBehaviour
@@ -24,43 +23,41 @@ public class GenerateSpot : MonoBehaviour
 
     //Manager
     public RealityEditorManager manager;
-    // VoiceToPrompt voiceToPrompt;
     
-    // Transform Control
 
     public bool isselsected = false;
     
-    public GameObject loadingIcon;
+    //public GameObject loadingIcon;
     
-    public ParticleSystem loadingParticles;
-    public Renderer SmoothCubeRenderer; 
+    // public ParticleSystem loadingParticles;
+    // public Renderer SmoothCubeRenderer; 
     public string Prompt;
 
     private string oldPrompt; 
     // public DataSync dataSync; 
     
-    public TMP_Text URLIDText;
+    // public TMP_Text URLIDText;
     
-    //Control Interface
-    public TMP_Text PromtText;
-    public Text LitseningText;
+    // //Control Interface
+    // public TMP_Text PromtText;
+    // public Text LitseningText;
     
-    // UI panel;
-    public GameObject UiMenu;
-    public GameObject[] controlPanels;
-    public Toggle[] PanelsToggles;
-    public GameObject VoicePanel;
-    public GameObject EditMenu;
-    public GameObject ScanningPanel;
+    // // UI panel;
+    // public GameObject UiMenu;
+    // public GameObject[] controlPanels;
+    // public Toggle[] PanelsToggles;
+    // public GameObject VoicePanel;
+    // public GameObject EditMenu;
+    // public GameObject ScanningPanel;
 
-    public GameObject DownloadPanel;
-    public GameObject selectMenu;
+    // public GameObject DownloadPanel;
+    // public GameObject selectMenu;
 
-    public GameObject ColorBtn;
-    public GameObject ErasingPanel;
+    // public GameObject ColorBtn;
+    // public GameObject ErasingPanel;
 
-    public Toggle EraseBtn;
-    public Slider Britheness;
+    // public Toggle EraseBtn;
+    // public Slider Britheness;
 
 
     // LoadObject
@@ -68,7 +65,7 @@ public class GenerateSpot : MonoBehaviour
 
     // public recordData RecordData;
     
-    public Projector erasingProjector;
+    // public Projector erasingProjector;
     
     // public BoundBox Outlinebox;
     ModelDownloader modelDownloader;
@@ -83,19 +80,19 @@ public class GenerateSpot : MonoBehaviour
     public Shader VertexColor,UnlitShader;
 
     public Material TargetMaterial;
-    public Material ProjectorMeterial;
+    // public Material ProjectorMeterial;
 
-    public Texture WhiteTex,OriginTex;
+    // public Texture WhiteTex,OriginTex;
 
-    public GameObject EraseQuad;
+    // public GameObject EraseQuad;
 
-    public RawImage PreviewWindow;
+    // public RawImage PreviewWindow;
     
-    public Transform Player;
+    // public Transform Player;
 
-    public Toggle sculptMode,PositionisLock;
+    // public Toggle sculptMode,PositionisLock;
 
-    public bool SculptingModeOn=false;
+    // public bool SculptingModeOn=false;
     
     //Networking
     // public string DataSyncTestNumber; 
@@ -115,10 +112,10 @@ public class GenerateSpot : MonoBehaviour
         // _runner = FindObjectOfType<NetworkRunner>();
         // _grabbable = GetComponent<Grabbable>();
         downloadURL=manager.ServerURL;
-        Player = manager.PlayerCamera; 
+        // Player = manager.PlayerCamera; 
         SpotType = GenerateType.Add;
-        loadingIcon.SetActive(false);
-        loadingParticles.Stop();
+        // loadingIcon.SetActive(false);
+        // loadingParticles.Stop();
         // grabInteractable=GetComponent<GrabInteractable>();
         
         // //NETWORKING
@@ -134,7 +131,7 @@ public class GenerateSpot : MonoBehaviour
         // //   externalController.GrabbedObjectDelegate += Grab;
         //    externalController.ReleasedObjectDelegate += Release;
         
-        loadingIcon.SetActive(false);
+        // loadingIcon.SetActive(false);
         
         // SpotType = GenerateType.Add;
         // initAdd();
@@ -144,12 +141,12 @@ public class GenerateSpot : MonoBehaviour
 
         if(manager.isFireScene){
 
-            VoicePanel.SetActive(false);
+            // VoicePanel.SetActive(false);
         }
 
         if (isAcopy)
         {
-            selectMenu.SetActive(false);
+            // selectMenu.SetActive(false);
 
         }
     }
@@ -202,7 +199,7 @@ public class GenerateSpot : MonoBehaviour
 
     void StopScupting(){
 
-        SculptingModeOn=false;
+        // SculptingModeOn=false;
         
     }
     
@@ -228,10 +225,10 @@ public class GenerateSpot : MonoBehaviour
 
     void BoundingBoxColorAlhpaDinstance(){
         
-        float distanceToPlayer = Vector3.Distance(transform.position, Player.position);
+        // float distanceToPlayer = Vector3.Distance(transform.position, Player.position);
 
         // Calculate the alpha value based on the distance
-        float alpha = Mathf.InverseLerp(maxDistance, minDistance, distanceToPlayer);
+        // float alpha = Mathf.InverseLerp(maxDistance, minDistance, distanceToPlayer);
 
         // Interpolate the alpha value of the material's color
 
@@ -265,14 +262,14 @@ public class GenerateSpot : MonoBehaviour
     public void initAdd()
     {
       ChecktheFile=  StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_generated.zip"));
-        loadingParticles.Play();
+        // loadingParticles.Play();
         isMaterialChanging = false;
         // VoicePanel.SetActive(true);
     }
 
     void initReconstruction()
     {
-        ScanningPanel.SetActive(true);
+        // ScanningPanel.SetActive(true);
     }
 
 
@@ -283,7 +280,7 @@ public class GenerateSpot : MonoBehaviour
 
     void CloseEditMenu()
     {
-        EditMenu.SetActive(false);
+        // EditMenu.SetActive(false);
     }
 
   bool isErasing=false;
@@ -295,33 +292,7 @@ public class GenerateSpot : MonoBehaviour
 
 
     
-    // private void HandlePointerEventRaised(PointerEvent evt)
-    // {
-    //     switch (evt.Type)
-    //     {
-    //         case PointerEventType.Select:
-    //             OnSelect();
 
-    //             isGrabing=true;
-    //             Debug.Log("Grabing"+URLID);
-
-
-
-                 
-
-                
-                
-    //             break;
-    //         case PointerEventType.Unselect:
-
-    //         // PreviewWindow.gameObject.SetActive(false);
-    //             Release();
-    //              Debug.Log("Not Grabing"+URLID);
-    //              isGrabing=false;
-
-    //             break;
-    //     }
-    // }
 
 
 
@@ -330,7 +301,7 @@ public class GenerateSpot : MonoBehaviour
     {
         if (!manager.GenCubesDic.ContainsKey(URLID))
         {
-            manager.GenCubesDic.Add(URLID,this.GameObject()); //This should be adding it to other peoples dictionaries once the URLID is synced
+            manager.GenCubesDic.Add(URLID,this.gameObject); //This should be adding it to other peoples dictionaries once the URLID is synced
             manager.IDs++; 
             manager.selectedIDUrl = URLID;
         }
@@ -349,17 +320,7 @@ public class GenerateSpot : MonoBehaviour
 
         }
     }
-    
-    // public void Grab(OVRInput.Controller grabHand)
-    // {
-    //     manager.updateSelected(id, URLID);
-    //     isselsected = true;
-    //     Debug.Log("should be requesting the transform and view in grab");
-    //     //URLIDText.text = "should be requesting the transform and view in grab";
-    //     // _realtimeTransform.RequestOwnership();
-    //     // _realtimeView.RequestOwnershipOfSelfAndChildren();
-    //     //  Outlinebox.line_renderer=true;
-    // }
+
 
     public void Release()
     {
@@ -371,21 +332,6 @@ public class GenerateSpot : MonoBehaviour
         // Outlinebox.line_renderer=false;
 
     }
-    // public void Copy()
-    // {
-    //     // GameObject ACopy = Instantiate(this.gameObject);
-    //     GameObject ACopy = manager.SpawnNetworkObject(transform.position, transform.rotation, gameObject);
-    //     ACopy.GetComponent<GenerateSpot>().id=manager.IDs;
-    //     string NewUrlID = (Int32.Parse(URLID) + 1).ToString(); 
-    //     ACopy.GetComponent<GenerateSpot>().URLID = NewUrlID;
-    //     Debug.Log("The new Duplicated Cube's URLID is: " + NewUrlID);
-    //     // ACopy.GetComponent<PhotonDataSync>().UpdateURLID(NewUrlID);  //setting the network urlid once right after we make the spot.
-    //     Debug.Log("Setting the network urlid to be: " + NewUrlID);
-    //     manager.GenCubesDic.Add(NewUrlID, ACopy); //think about this: Are we adding the cube to the other players dictionaries? 
-    //     manager.IDs++;
-    //     // ACopy.GetComponent<GenerateSpot>().isAcopy = true;
-
-    // }
 
     bool originTex=false;
 
@@ -412,7 +358,7 @@ public class GenerateSpot : MonoBehaviour
                     originTex=true;
 
 
-                     OriginTex=TargetMaterial.GetTexture("_MainTex");
+                    //  OriginTex=TargetMaterial.GetTexture("_MainTex");
                      
                 }
 
@@ -427,34 +373,34 @@ public class GenerateSpot : MonoBehaviour
 
     public void ControlPanels()
     {
-        for (int i = 0; i < PanelsToggles.Length; i++)
-        {
+    //     for (int i = 0; i < PanelsToggles.Length; i++)
+    //     {
 
-            controlPanels[i].SetActive(PanelsToggles[i].isOn);
+    //         controlPanels[i].SetActive(PanelsToggles[i].isOn);
 
-        }
+    //     }
 
-        if (controlPanels[0].activeInHierarchy == true || controlPanels[1].activeInHierarchy == true)
-        {
+    //     if (controlPanels[0].activeInHierarchy == true || controlPanels[1].activeInHierarchy == true)
+    //     {
 
-            //AimStart.GetComponent<MeshRenderer>().enabled=false;
-      //      VoicePanel.SetActive(true);
-        }
-        else
-        {
+    //         //AimStart.GetComponent<MeshRenderer>().enabled=false;
+    //   //      VoicePanel.SetActive(true);
+    //     }
+    //     else
+    //     {
 
-            // RecordData.campoints.Seton(true);
-      //    VoicePanel.SetActive(false);
-            //AimStart.GetComponent<MeshRenderer>().enabled=true;
+    //         // RecordData.campoints.Seton(true);
+    //   //    VoicePanel.SetActive(false);
+    //         //AimStart.GetComponent<MeshRenderer>().enabled=true;
 
 
-        }
+    //     }
 
     }
 
     public void onLitsenClick()
     {
-        Prompt = LitseningText.text;
+        // Prompt = LitseningText.text;
 
     }
 
@@ -494,11 +440,11 @@ public class GenerateSpot : MonoBehaviour
         //     FindObjectOfType<RealityEditorManager2>();  //this shouldnt be necessary
         // }
         
-        URLIDText.text = URLID; //commented this out while trying to figure out data syncing
+        // URLIDText.text = URLID; //commented this out while trying to figure out data syncing
         
         if (isAcopy)
         {
-            UiMenu.SetActive(false);
+          //  UiMenu.SetActive(false);
             return;
 
         }
@@ -510,8 +456,8 @@ public class GenerateSpot : MonoBehaviour
 
             case GenerateType.Add:
                 setMaterialforGenrated(TargetObject.transform,VertexColor);
-                EraseBtn.gameObject.SetActive(false);
-                ColorBtn.SetActive(true);
+                // EraseBtn.gameObject.SetActive(false);
+                // ColorBtn.SetActive(true);
 
                 break;
 
@@ -527,31 +473,31 @@ public class GenerateSpot : MonoBehaviour
                 TargetObject.transform.localEulerAngles=new Vector3(0,-90,90);
                 TargetObject.transform.localScale=new Vector3(8,8,8);
                  //EraseBtn.SetActive(true);
-                 ColorBtn.SetActive(false);
-                 EraseBtn.gameObject.SetActive(true);
+                //  ColorBtn.SetActive(false);
+                //  EraseBtn.gameObject.SetActive(true);
 
-                 isErasing=EraseBtn.isOn;
+                //  isErasing=EraseBtn.isOn;
 
-                 PreviewWindow.gameObject.SetActive(isselsected);
+                //  PreviewWindow.gameObject.SetActive(isselsected);
 
-                 erasingProjector.gameObject.SetActive(isErasing);
+                //  erasingProjector.gameObject.SetActive(isErasing);
 
-                EraseQuad.SetActive(false); 
+                // EraseQuad.SetActive(false); 
              if(isErasing){
 
 
                 if(!PanelLock){
                     PanelLock=true;
-                    ErasingPanel.SetActive(true);
+                    // ErasingPanel.SetActive(true);
                 }
 
-                   TargetMaterial.SetTexture("_MainTex", WhiteTex);
-                   ProjectorMeterial.SetFloat("_Amt",Britheness.value);
+                //    TargetMaterial.SetTexture("_MainTex", WhiteTex);
+                //    ProjectorMeterial.SetFloat("_Amt",Britheness.value);
 
              }else{
                     PanelLock=false;
-                    ErasingPanel.SetActive(false);
-                 TargetMaterial.SetTexture("_MainTex", OriginTex);
+                    // ErasingPanel.SetActive(false);
+                //  TargetMaterial.SetTexture("_MainTex", OriginTex);
              }
 
                 
@@ -580,7 +526,7 @@ public class GenerateSpot : MonoBehaviour
 
 
         // if (isselsected) PromtText.text = Prompt;
-        PromtText.text = Prompt; 
+        // PromtText.text = Prompt; 
 
 
         if (Input.GetKeyDown(KeyCode.X))
@@ -632,7 +578,7 @@ public class GenerateSpot : MonoBehaviour
     public void materialModify()
     {
         isMaterialChanging = true;
-        VoicePanel.SetActive(true);
+        // VoicePanel.SetActive(true);
 
 
     }
@@ -682,29 +628,8 @@ public class GenerateSpot : MonoBehaviour
 
 
 
-    void DebugModifyModelinstruction()
-    {
-        manager.InstructModify(id, "A Metal Apple", URLID);
-        URLIDText.text = URLID;
-        loadingIcon.SetActive(true);
-        Prompt = "";
-        InstructGen = false;
-       ChecktheFile= StartCoroutine(CheckURLPeriodically(downloadURL + URLID + "_Instruction.zip"));
-        StartCoroutine(CleartheObjinTarget());
-        //  UiMenu.SetActive(false);
-
-    }
 
 
-    public void DebugGenrateModel()
-    {
-        manager.promtGenerateModel(id, "Apple", URLID);
-        URLIDText.text = URLID;
-        // PreViewQuad.SetActive(true);
-        loadingIcon.SetActive(true);
-        Prompt = "";
-
-    }
 
 
 
@@ -715,8 +640,8 @@ public class GenerateSpot : MonoBehaviour
     public void GenrateModel()
     {
         manager.promtGenerateModel(id, Prompt, URLID);
-        loadingParticles.Play();
-        SmoothCubeRenderer.enabled = false;
+        // loadingParticles.Play();
+        // SmoothCubeRenderer.enabled = false;
         // Outlinebox.wire_renderer = false;
 
         DremmeshPrompt=Prompt;
@@ -732,8 +657,8 @@ public class GenerateSpot : MonoBehaviour
     public void GenrateModelPrompt(string prompt)
     {
         manager.promtGenerateModel(id, prompt, URLID);
-        loadingParticles.Play();
-        SmoothCubeRenderer.enabled = false;
+        // loadingParticles.Play();
+        // SmoothCubeRenderer.enabled = false;
         // Outlinebox.wire_renderer = false;
 
         DremmeshPrompt=Prompt;
@@ -750,10 +675,10 @@ public class GenerateSpot : MonoBehaviour
     void ModifyModelinstruction()
     {
         manager.InstructModify(id, Prompt, URLID);
-        loadingParticles.Play();
-        SmoothCubeRenderer.enabled = false;
+        // loadingParticles.Play();
+        // SmoothCubeRenderer.enabled = false;
 
-        loadingIcon.SetActive(true);
+        // loadingIcon.SetActive(true);
         Prompt = "";
         InstructGen = false;
         SpotType=GenerateType.Instruction;
@@ -785,8 +710,8 @@ public class GenerateSpot : MonoBehaviour
     
 
     bool StartScanning = false;
-    public TMP_Text Text_Scanning_Btn;
-    public TMP_Text Text_Instruction;
+    // public TMP_Text Text_Scanning_Btn;
+    // public TMP_Text Text_Instruction;
 
 //     public void ScanObject()
 //     {
@@ -850,9 +775,9 @@ public class GenerateSpot : MonoBehaviour
             }
         );
 
-        loadingIcon.SetActive(false);
-        loadingParticles.Stop();
-        SmoothCubeRenderer.enabled = false;
+        // loadingIcon.SetActive(false);
+        // loadingParticles.Stop();
+        // SmoothCubeRenderer.enabled = false;
 
         modelDownloader.startDownload();
     }
@@ -920,7 +845,7 @@ public class GenerateSpot : MonoBehaviour
                 if(!Inpainted)
                 {
                     Inpainted=true;
-                    CreateMaterialAndSetTexture(url, ProjectorMeterial);
+                   // CreateMaterialAndSetTexture(url, ProjectorMeterial);
 
                 }
 
@@ -987,7 +912,7 @@ public class GenerateSpot : MonoBehaviour
         // Start the coroutine to download and apply the texture
         StartCoroutine(DownloadImageCoroutine(imageUrl, newMaterial));
     }
-    public Texture2D erasingTexture;
+    // public Texture2D erasingTexture;
     [ColorUsage(true, true)]
     public Color Bright,Dark;
 
@@ -1007,24 +932,24 @@ public class GenerateSpot : MonoBehaviour
             {
                 // Get the downloaded texture
                 Texture2D downloadedTexture = DownloadHandlerTexture.GetContent(webRequest);
-                erasingTexture=downloadedTexture;
+                // erasingTexture=downloadedTexture;
              
                 // Apply the texture to the provided material
                 material.SetTexture("_ShadowTex",downloadedTexture);
-                erasingProjector.gameObject.SetActive(true);
-                erasingProjector.material=material;
-                // erasingProjector.GetComponent<EraseProjectorControl>().mat=material;
-                erasingProjector.gameObject.SetActive(false);
-                ProjectorMeterial=material;
+                // erasingProjector.gameObject.SetActive(true);
+                // erasingProjector.material=material;
+                // // erasingProjector.GetComponent<EraseProjectorControl>().mat=material;
+                // erasingProjector.gameObject.SetActive(false);
+                // ProjectorMeterial=material;
 
 
                 
                 Debug.Log("Image applied to new material successfully.");
-                loadingIcon.SetActive(false);
-                loadingParticles.Stop();
+                // loadingIcon.SetActive(false);
+                // loadingParticles.Stop();
                 GenerationisComplete=true;
 
-                DownloadPanel.SetActive(true);
+                // DownloadPanel.SetActive(true);
             }
         }
     }
@@ -1032,12 +957,7 @@ public class GenerateSpot : MonoBehaviour
     public void deletespot()
     {
         
-        // if (_runner == null || !_runner.IsRunning)
-        // {
-        //     Debug.LogError("NetworkRunner is not running. Cannot destroy network object.");
-        //     return;
-        // }
-        // _runner.Despawn(GetComponent<NetworkObject>());
+
         Destroy(gameObject);
     }
 

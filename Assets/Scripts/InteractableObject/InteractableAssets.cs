@@ -53,8 +53,8 @@ public class InteractableAssets : MonoBehaviour
         generateSpot=gameObject.GetComponent<GenerateSpot>();
        
 
-        Left=manager.LeftHand;
-        Right=manager.RightHand;
+        // Left=manager.LeftHand;
+        // Right=manager.RightHand;
 
 
 
