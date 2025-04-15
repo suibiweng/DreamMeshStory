@@ -2,14 +2,36 @@ using UnityEngine;
 using UnityEngine.Networking;
 using System.Collections;
 using System.Text;
+using RealityEditor;
 
 public class StorySender : MonoBehaviour
 {
     public string serverUrl = "http://192.168.0.139:5000/StoryGenerator";  // Change to your Flask server URL
 
-    public void SendStory()
+    public DreamTellerRemoteReader dreamTellerRemoteReader;
+
+
+
+    
+    public void DebugSendStory()
     {
-        StartCoroutine(PostStoryCoroutine("A pig infront of WareHouse", "StoryTest"));
+        string urlid= IDGenerator.GenerateID();
+        StartCoroutine(PostStoryCoroutine("A bear infront of a house", urlid));
+        dreamTellerRemoteReader.GenerateScene(urlid);
+
+    }
+
+
+
+
+
+
+    public void SendStory(string text)
+    {
+        string urlid= IDGenerator.GenerateID();
+        StartCoroutine(PostStoryCoroutine(text, urlid));
+        dreamTellerRemoteReader.GenerateScene(urlid);
+
     }
 
     IEnumerator PostStoryCoroutine(string story, string urlid)

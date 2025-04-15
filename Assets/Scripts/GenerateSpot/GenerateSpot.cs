@@ -80,27 +80,7 @@ public class GenerateSpot : MonoBehaviour
     public Shader VertexColor,UnlitShader;
 
     public Material TargetMaterial;
-    // public Material ProjectorMeterial;
 
-    // public Texture WhiteTex,OriginTex;
-
-    // public GameObject EraseQuad;
-
-    // public RawImage PreviewWindow;
-    
-    // public Transform Player;
-
-    // public Toggle sculptMode,PositionisLock;
-
-    // public bool SculptingModeOn=false;
-    
-    //Networking
-    // public string DataSyncTestNumber; 
-    // public RealtimeTransform _realtimeTransform;
-    // public RealtimeView _realtimeView;
-    // private NetworkObject _networkObject;
-    // private PhotonDataSync _photonDataSync;
-    // private GenerateSpotRPC _generateSpotRPC; 
   
 
     
@@ -154,20 +134,7 @@ public class GenerateSpot : MonoBehaviour
     bool hasMeshFilter=false;
 
 
-    // public void changeSculptMode(){
-    //     if(sculptMode.isOn){
-    //          StartSculpting();
-    //          manager.turnSculptingMenu(sculptMode.isOn);
 
-    //     }else{
-    //         manager.turnSculptingMenu(sculptMode.isOn);
-    //          StopScupting();
-             
-    //     }
-
-    // }
-
-    // public GrabInteractable grabInteractable;
 
     public void toLockthePosition(bool toLock)
     {
@@ -257,6 +224,18 @@ public class GenerateSpot : MonoBehaviour
     }
 
     Coroutine ChecktheFile;
+
+    public void startDownload(string url){
+
+         ChecktheFile=  StartCoroutine(CheckURLPeriodically(url));
+
+
+
+    }
+
+
+
+    
 
 
     public void initAdd()

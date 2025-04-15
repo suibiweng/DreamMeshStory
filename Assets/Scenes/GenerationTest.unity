@@ -207,7 +207,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1378611043}
         m_TargetAssemblyTypeName: StorySender, Assembly-CSharp
-        m_MethodName: SendStory
+        m_MethodName: DebugSendStory
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1401,6 +1401,7 @@ GameObject:
   - component: {fileID: 1378611041}
   - component: {fileID: 1378611042}
   - component: {fileID: 1378611043}
+  - component: {fileID: 1378611044}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -1586,6 +1587,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serverUrl: http://192.168.0.139:5000/StoryGenerator
+  dreamTellerRemoteReader: {fileID: 0}
+--- !u!114 &1378611044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1378611033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8697b6af3a3f0410f960b7d8d8d89639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serverIP: 192.168.0.139
+  port: 8000
+  sessionName: StoryTest
+  GenObj: {fileID: 5269237084850573197, guid: 4401ee33866095f43990b69e11f7919a, type: 3}
+  retryInterval: 2
 --- !u!1 &2125752811
 GameObject:
   m_ObjectHideFlags: 0
