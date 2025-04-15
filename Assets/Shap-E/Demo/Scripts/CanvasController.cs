@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEditor;
+// using UnityEditor;
 namespace AiKodexShapE
 {
     public class CanvasController : MonoBehaviour
@@ -13,8 +13,8 @@ namespace AiKodexShapE
             launcher.onClick.AddListener(TaskOnClick);
         }
         void TaskOnClick()
-        {
-            EditorApplication.ExecuteMenuItem("Window/Shap-E");
+    {
+        //     EditorApplication.ExecuteMenuItem("Window/Shap-E");
         }
     }
 }
